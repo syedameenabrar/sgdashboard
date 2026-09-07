@@ -24,8 +24,8 @@
         dest: "{{project_path}}"
         version: "{{gitBranch}}"
         force: yes
-    # - name: Update npm
-    #   shell: cd {{project_path}} && npm i --force
+    - name: Update npm
+      shell: cd {{project_path}} && npm i --force
     - name: Set permission
       shell: chmod 744 {{ project_path }}/src/scripts/json2env.sh
     - name: Generate .env
