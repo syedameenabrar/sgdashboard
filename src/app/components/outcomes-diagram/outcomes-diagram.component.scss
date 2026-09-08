@@ -126,19 +126,11 @@
     line-height: 1.35;
     margin-top: 0.75rem;
   }
-
-  .rlabel {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 35rem) {
   :host-context(.has-program-data) .layer-diagram {
     margin-bottom: 0;
     margin-top: 0;
-  }
-
-  .rlabel {
-    font-size: 0.875rem;
   }
 }

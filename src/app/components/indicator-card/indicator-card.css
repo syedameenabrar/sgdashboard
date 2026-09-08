@@ -4,7 +4,7 @@
   display: flex;
   transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
   opacity: 0;
-  transform: translateY(30px) scale(0.95);
+  transform: translateY(1.88rem) scale(0.95);
   animation: slideInUpScale 0.6s forwards;
   width: 80%;
   margin-left: auto;
@@ -18,7 +18,7 @@
   object-fit: contain;
   padding-right: 7%;
   width:inherit;
-  height: 100px;
+  height: 6.25rem;
 }
 
 .indicator-content {
@@ -29,9 +29,9 @@
 }
 
 .divider {
-  width: 2px;
+  width: 0.13rem;
   height: 7rem;
-  background-color: #dddada ;
+  background-color: var(--indicator-divider);
 }
 
 .indicator-container {
@@ -51,7 +51,6 @@
   color: var(--secondary-color-light);
   line-height: 1.12;
   margin: 0 0 0.25rem;
-  white-space: nowrap;
 }
 
 .indicator-label {
@@ -71,19 +70,19 @@
 }
 
 @keyframes slideInUpScale {
-  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  from { opacity: 0; transform: translateY(1.88rem) scale(0.95); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .indicator-value {
     font-size: 1rem;
   }
   .indicator-container {
-    margin-left: 10px;
+    margin-left: 0.63rem;
   }
   .indicator-card {
-    margin-bottom: 10px;
+    margin-bottom: 0.63rem;
   }
   .indicator-icon {
     min-width: 20%;
@@ -91,6 +90,6 @@
   }
 
   .indicator-card {
-    margin-right: 65px;
+    margin-right: 4.06rem;
   }
 }

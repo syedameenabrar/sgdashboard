@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 import { environment } from '../../../../environments/environment';
 import { HEATMAP_THEME, THEMES_EMERGED } from '../../../constants/urlConstants';
-import { DEFAULT_THEME_COLORS, HEATMAP_TEXT, THEME_CLASS_COLORS } from '../../../constants/heatmapConstants';
+import { DEFAULT_THEME_COLORS, HEATMAP_TEXT } from '../../../constants/heatmapConstants';
 import * as d3 from 'd3';
 import { ActiveElement, Chart, ChartConfiguration, ChartEvent, registerables, ScriptableContext } from 'chart.js';
 import { TreemapController, TreemapDataPoint, TreemapElement } from 'chartjs-chart-treemap';
@@ -158,20 +158,14 @@ export class HeatMapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private getThemeColors(config: any, index: number): { background: string; active: string } {
-    const fallback = DEFAULT_THEME_COLORS[index % DEFAULT_THEME_COLORS.length];
-    const color = config?.color;
-    const classColors = typeof color === 'string' ? THEME_CLASS_COLORS[color] : undefined;
+    const rankColors = DEFAULT_THEME_COLORS[index % DEFAULT_THEME_COLORS.length];
 
     const background = this.getColorValue(config?.backgroundColor)
       ?? this.getColorValue(config?.inactiveColor)
-      ?? this.getColorValue(color)
-      ?? classColors?.background
-      ?? fallback.background;
+      ?? rankColors.background;
 
     const active = this.getColorValue(config?.activeColor)
-      ?? classColors?.active
-      ?? background
-      ?? fallback.active;
+      ?? rankColors.active;
 
     return { background, active };
   }
@@ -187,10 +181,17 @@ export class HeatMapComponent implements OnInit, AfterViewInit, OnDestroy {
     return null;
   }
 
+  private readonly handleTreemapPointerLeave = (): void => {
+    if (!this.hoveredThemeTooltip) return;
+    this.hoveredThemeTooltip = null;
+    this.changeDetectorRef.detectChanges();
+  };
+
   private renderTreemap(): void {
     if (!this.isViewReady || !this.treemapCanvasRef || !this.themes.length) return;
 
     this.chart?.destroy();
+    this.treemapCanvasRef.nativeElement.removeEventListener('pointerleave', this.handleTreemapPointerLeave);
 
     const config: ChartConfiguration<'treemap', TreemapDataPoint[], unknown> = {
       type: 'treemap',
@@ -245,6 +246,7 @@ export class HeatMapComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     this.chart = new Chart(this.treemapCanvasRef.nativeElement, config);
+    this.treemapCanvasRef.nativeElement.addEventListener('pointerleave', this.handleTreemapPointerLeave);
   }
 
   private activateThemeFromElement(element?: ActiveElement): void {
@@ -304,11 +306,66 @@ export class HeatMapComponent implements OnInit, AfterViewInit, OnDestroy {
       if (rect['width'] < 16 || rect['height'] < 16) return;
 
       const shouldDrawText = this.shouldDrawTreemapText(ctx, data, rect);
-      this.drawTreemapIcon(ctx, data, rect, !shouldDrawText);
       if (shouldDrawText) {
+        this.drawTreemapIcon(ctx, data, rect, false);
         this.drawTreemapText(ctx, data, rect);
+        return;
       }
+
+      const drewCompactLabel = this.drawTreemapCompactLabel(ctx, data, rect);
+      this.drawTreemapIcon(ctx, data, rect, !drewCompactLabel);
     });
+  }
+
+  private drawTreemapCompactLabel(
+    ctx: CanvasRenderingContext2D,
+    data: Record<string, any>,
+    rect: Record<string, number>
+  ): boolean {
+    const label = String(data['label'] ?? '').trim();
+    if (!label || rect['width'] < 44 || rect['height'] < 28) return false;
+
+    const fontSize = rect['width'] * rect['height'] > 12000 ? 12 : rect['width'] < 70 ? 9 : 10;
+    const padding = 6;
+    const lineHeight = fontSize + 3;
+    const iconLayout = this.getTreemapIconLayout(data, rect);
+    const iconBottom = iconLayout ? iconLayout.y + iconLayout.size + 4 : rect['y'] + padding;
+    const stackRoom = rect['y'] + rect['height'] - padding - iconBottom;
+
+    let textX: number;
+    let textY: number;
+    let maxWidth: number;
+
+    if (stackRoom >= lineHeight) {
+      textX = rect['x'] + padding;
+      textY = iconBottom;
+      maxWidth = rect['width'] - padding * 2;
+    } else if (iconLayout) {
+      textX = iconLayout.x + iconLayout.size + 6;
+      textY = iconLayout.y + (iconLayout.size - fontSize) / 2;
+      maxWidth = rect['x'] + rect['width'] - padding - textX;
+    } else {
+      textX = rect['x'] + padding;
+      textY = rect['y'] + (rect['height'] - fontSize) / 2;
+      maxWidth = rect['width'] - padding * 2;
+    }
+
+    if (maxWidth < 18) return false;
+
+    ctx.save();
+    ctx.font = `700 ${fontSize}px "Source Sans 3", Arial, sans-serif`;
+    const text = this.ellipsizeCanvasText(ctx, label, maxWidth);
+    if (text.replace(/\./g, '').trim().length < 2) {
+      ctx.restore();
+      return false;
+    }
+
+    ctx.textBaseline = 'top';
+    ctx.fillStyle = '#ffffff';
+    ctx.globalAlpha = data['id'] === this.activeThemeId ? 1 : 0.96;
+    ctx.fillText(text, textX, textY);
+    ctx.restore();
+    return true;
   }
 
   private drawTreemapIcon(
@@ -322,11 +379,17 @@ export class HeatMapComponent implements OnInit, AfterViewInit, OnDestroy {
     if (typeof icon !== 'string' || !icon || !iconLayout) return;
 
     const image = this.getTreemapIconImage(icon);
-    if (!image.complete || image.naturalWidth === 0) return;
+    if (!image.complete || image.naturalWidth === 0 || image.naturalHeight === 0) return;
+
+    const scale = iconLayout.size / Math.max(image.naturalWidth, image.naturalHeight);
+    const drawWidth = image.naturalWidth * scale;
+    const drawHeight = image.naturalHeight * scale;
+    const drawX = iconLayout.x + (iconLayout.size - drawWidth) / 2;
+    const drawY = iconLayout.y + (iconLayout.size - drawHeight) / 2;
 
     ctx.save();
     ctx.globalAlpha = data['id'] === this.activeThemeId ? 1 : 0.95;
-    ctx.drawImage(image, iconLayout.x, iconLayout.y, iconLayout.size, iconLayout.size);
+    ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
     ctx.restore();
   }
 
@@ -442,9 +505,16 @@ export class HeatMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const isTiny = rect['width'] < 44 || rect['height'] < 44;
     const padding = rect['width'] * rect['height'] > 26000 ? 10 : isTiny ? 4 : 7;
-    const size = iconOnly
-      ? Math.max(10, Math.min(22, rect['width'] * 0.28, rect['height'] * 0.28))
-      : Math.max(10, Math.min(24, rect['width'] * 0.16, rect['height'] * 0.2));
+
+    // Icon always sits at the top-left of the card. Text-less cards get a
+    // larger icon for visibility; cards with text keep it compact so it
+    // doesn't crowd the label. The size is clamped to what fits inside the
+    // padded box so the icon never spills out of the card.
+    const available = Math.min(rect['width'], rect['height']) - padding * 2;
+    const target = iconOnly
+      ? Math.min(64, rect['width'] * 0.42, rect['height'] * 0.42)
+      : Math.min(20, rect['width'] * 0.13, rect['height'] * 0.16);
+    const size = Math.max(8, Math.min(target, available));
 
     return {
       x: rect['x'] + padding,
@@ -524,6 +594,7 @@ export class HeatMapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.treemapCanvasRef?.nativeElement.removeEventListener('pointerleave', this.handleTreemapPointerLeave);
     this.chart?.destroy();
   }
 }
