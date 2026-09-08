@@ -90,7 +90,6 @@
   .action-item {
       display: flex;
       align-items: center;
-      color: var(--oc-white);
       font-size: 0.875rem;
       padding: 0.5rem 0.75rem;
       margin-right: 0.9375rem;
@@ -118,7 +117,6 @@
 .card-image-wrapper {
   flex: 0 0 40%;
   max-width: 40%;
-  border-radius: 0.38rem;
   overflow: hidden;
   max-height: 12.5rem;
   border-radius: 0;
