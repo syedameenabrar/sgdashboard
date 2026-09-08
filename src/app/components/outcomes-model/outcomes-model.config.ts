@@ -77,6 +77,8 @@ export interface OutcomesLayerConfig {
   heading?: string;
   eyebrow?: string;
   subheading?: string;
+  learner_subheading?: string;
+  impact_subheading?: string;
   body?: string;
   frameworkNote?: string;
   cta?: OutcomesCta;
