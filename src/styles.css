@@ -38,6 +38,7 @@ html {
   --sg-font-heading: "Comfortaa", sans-serif;
 --sg-font-body: "Source Sans 3", sans-serif;
 --sg-font-partner: "Noto Sans", sans-serif;
+--sg-font-quote: "Manrope", sans-serif;
 --sg-heading-size: 32px;
 --sg-heading-size-mobile: 24px;
 --sg-subheading-size: 24px;
@@ -130,6 +131,15 @@ html {
   --heatmap-theme-beige: #e2c968;
   --heatmap-theme-beige-active: #f2d14c;
   --heatmap-theme-grey: var(--oc-disabled-border);
+  --heatmap-tooltip-bg: rgba(255, 255, 255, 0.85);
+
+  /* Indicator card component colors */
+  --indicator-divider: #dddada;
+
+  /* Improvement story component colors */
+  --is-story-accent: #7a1fa2;
+  --is-story-title: #333333;
+  --is-heart-liked: #e53935;
 
 }
 

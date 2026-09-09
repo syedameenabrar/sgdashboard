@@ -250,11 +250,6 @@ export class OutcomesModelComponent implements OnDestroy, OnInit {
     return this.infoModalLayer.heading || this.infoModalLayer.eyebrow || this.infoModalLayer.chipLabel || `${prefix} ${this.infoModalLayer.chipLabel}`;
   }
 
-  get infoModalDescription(): string {
-    const prefix = this.staticTexts.infoModalDescriptionPrefix || 'Information about';
-    return this.hasProgramOutcomeData ? this.narrativeBody : this.infoModalLayer.subheading || this.narrativeBody || `${prefix} ${this.infoModalLayer.chipLabel}`;
-  }
-
   get infoModalIcon(): string {
     return (
       this.getProgramLayerIcon(this.infoModalLayer.key) ||
@@ -485,18 +480,10 @@ export class OutcomesModelComponent implements OnDestroy, OnInit {
   }
 
   private getProgramLayerIcon(layerKey: OutcomesLayerKey): string {
-    const layerData = this.getProgramLayerData(layerKey);
-    const baseData = layerKey === this.programBaseLayerKey ? this.programOutcomeData : undefined;
-    const data = layerData || baseData;
-
+    const layer = this.getLayerByKey(layerKey);
     return (
-      data?.diagramIconUrl ||
-      data?.diagramIcon ||
-      data?.iconUrl ||
-      data?.imageUrl ||
-      data?.imgPath ||
-      data?.image ||
-      data?.icon ||
+      layer?.diagram?.icon?.value ||
+      layer?.imgPath ||
       ''
     );
   }

@@ -241,7 +241,6 @@ export interface OutcomesModelConfig {
     chipNotePrefix?: string;
     evidenceCountLabel?: string;
     infoModalTitlePrefix?: string;
-    infoModalDescriptionPrefix?: string;
     evidenceNameFallbackSuffix?: string;
   };
 }

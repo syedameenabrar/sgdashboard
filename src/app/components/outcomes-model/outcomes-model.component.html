@@ -468,7 +468,7 @@
   <app-outcomes-info-modal
     *ngIf="isInfoModalOpen"
     [title]="infoModalTitle"
-    [description]="infoModalDescription"
+    [description]="selectedLayer.impact_subheading || ''"
     [icon]="infoModalIcon"
     [color]="infoModalColor"
     [listItems]="infoModalListItems"

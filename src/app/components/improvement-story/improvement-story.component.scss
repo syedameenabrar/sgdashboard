@@ -7,31 +7,32 @@
 }
 
 .quote-icon {
+  font-family: var(--sg-font-quote);
   font-size: 6rem;
   font-weight: 900;
   line-height: 0.5;
-  color: #7a1fa2;
+  color: var(--is-story-accent);
   padding-top: 0rem;
   position: absolute;
 }
 
 .crown {
   position: absolute;
-  top: -30px;    
-  left: -30px;       
-  z-index: 999;      
-  width: 48px;       
+  top: -1.88rem;
+  left: -1.88rem;
+  z-index: 999;
+  width: 3rem;
   height: auto;
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 1.13rem;
   font-weight: 700;
-  color: #333;
-  border-bottom: 1px solid;
+  color: var(--is-story-title);
+  border-bottom: 0.06rem solid;
   max-width: 80%;
   margin-top: 1.2rem;
-  margin-left: 45px;
+  margin-left: 2.81rem;
 }
 
 .title-text {
@@ -48,23 +49,23 @@
 .card-meta {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
-  margin-left: 25px;
+  margin-bottom: 3.13rem;
+  margin-left: 1.56rem;
   margin-top: 1rem;
   .meta-icon {
-      font-size: 20px;
-      color: #7a1fa2;
-      width: 30px;
+      font-size: 1.25rem;
+      color: var(--is-story-accent);
+      width: 1.88rem;
   }
   .location {
-      font-size: 12px;
-      color: #000000;
+      font-size: 0.75rem;
+      color: var(--oc-black);
   }
 
   .leader-text{
     font-weight: 700;
-    font-size: 13px;
-    color: #000000;
+    font-size: 0.81rem;
+    color: var(--oc-black);
 
   }
 }
@@ -89,24 +90,23 @@
   .action-item {
       display: flex;
       align-items: center;
-      color: white;
       font-size: 0.875rem;
       padding: 0.5rem 0.75rem;
       margin-right: 0.9375rem;
-      border: 1px solid white;
-      border-radius: 5px;
-      background: white;
-      color: purple;
+      border: 0.06rem solid var(--oc-white);
+      border-radius: 0.31rem;
+      background: var(--oc-white);
+      color: var(--primary-color);
       font-weight: 700;
 
   }
 
   .read-story-btn {
       margin-left: auto;
-      padding: 0.5625rem 1.5625rem;  
+      padding: 0.5625rem 1.5625rem;
       background-color: transparent;
-      color: #ffffff;
-      border: 1px solid black;
+      color: var(--oc-white);
+      border: 0.06rem solid var(--oc-black);
       border-radius: 0.25rem;
       font-weight: 800;
       cursor: pointer;
@@ -117,13 +117,12 @@
 .card-image-wrapper {
   flex: 0 0 40%;
   max-width: 40%;
-  border-radius: 6px;
   overflow: hidden;
-  max-height: 200px;
-  border-radius: 0px;
+  max-height: 12.5rem;
+  border-radius: 0;
   padding-right:1rem;
-  margin-top: 25px;
-  margin-bottom: 30px;
+  margin-top: 1.56rem;
+  margin-bottom: 1.88rem;
 
 
   .card-image {
@@ -132,13 +131,13 @@
     aspect-ratio: 1 / 1;
       object-fit: cover;
       display: block;
-      border-radius: 8px;
+      border-radius: 0.5rem;
   }
 }
 
 .slide-item.active > .story-card {
   &:first-child {
-      margin-right: 20px;
+      margin-right: 1.25rem;
   }
 }
 
@@ -146,13 +145,13 @@ mat-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  height: 20px;
-  width: 20px;
+  font-size: 1.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
   line-height: 1;
   vertical-align: middle;
   color: var(--primary-color);
-  margin-right: 5px;
+  margin-right: 0.31rem;
 }
 
 .story-body {
@@ -163,7 +162,7 @@ mat-icon {
 .story-text {
   flex: 1;
   min-width: 0;
-  margin-top: 60px;
+  margin-top: 3.75rem;
   min-height: 12.1875rem;
 }
 
@@ -179,13 +178,13 @@ mat-icon {
 .like-item {
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--oc-white);
   font-size: 0.875rem;
   padding: 0rem 0.625rem;
   margin-right: 0.9375rem;
-  border: 1px solid white;
-  border-radius: 5px;
-  background: white;
+  border: 0.06rem solid var(--oc-white);
+  border-radius: 0.31rem;
+  background: var(--oc-white);
   font-weight: 700;
   gap: 0.375rem;
   cursor: pointer;
@@ -202,8 +201,8 @@ mat-icon {
 
 
 .heart-svg.liked {
-  fill: #e53935; 
-  stroke: #e53935; 
+  fill: var(--is-heart-liked);
+  stroke: var(--is-heart-liked);
   transform: scale(1.05);
 }
 
@@ -214,29 +213,29 @@ mat-icon {
 }
 
 .likes-count.liked {
-  color: #000;
+  color: var(--oc-black);
 }
 
 .tall-card .card-image-wrapper{
-  margin-bottom: 50px;
+  margin-bottom: 3.13rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .crown {
-    width: 70px;
+    width: 4.38rem;
   }
   .read-story-btn {
-    font-size: 13px !important;
+    font-size: 0.81rem !important;
   }
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 48rem) {
   .card-actions {
-    margin-top: -30px;
+    margin-top: -1.88rem;
   .action-item,
   .like-item {
     font-size: 0.5625rem;
-    padding: 0rem 0.25rem; 
+    padding: 0rem 0.25rem;
   }
   .likes-count{
     font-size: 0.5625rem;
@@ -249,11 +248,11 @@ mat-icon {
 }
 
 .action-icon {
-  font-size: 15px;
+  font-size: 0.94rem;
 }
 .card-content {
-  height: 195px;
-  min-height: 215px;
+  height: 12.19rem;
+  min-height: 13.44rem;
 }
 
 .quote-icon{
@@ -261,23 +260,23 @@ mat-icon {
 }
 
 .card-title {
-  font-size: 10px;
+  font-size: 0.63rem;
   font-weight: 800;
   padding-bottom: 0.5rem;
-  width: 90px;
-  margin-left: 25px;
+  width: 5.63rem;
+  margin-left: 1.56rem;
 }
 
 .card-meta {
-  margin-left: 0px;
+  margin-left: 0;
   .meta-icon {
-    width: 20px;
+    width: 1.25rem;
   }
   .leader-text{
-    font-size: 8px;
+    font-size: 0.5rem;
   }
   .location{
-    font-size: 8px;
+    font-size: 0.5rem;
   }
 }
 
@@ -291,7 +290,7 @@ mat-icon {
 }
 
 .tall-card {
-  height: 198px;
+  height: 12.38rem;
 }
 
 .tall-card .card-actions{
@@ -307,8 +306,8 @@ mat-icon {
 }
 
 .card-title {
-  font-size: 10px;
-  margin-left: 25px;
+  font-size: 0.63rem;
+  margin-left: 1.56rem;
   width: 100%;
 
   line-height: 1.4;
@@ -318,7 +317,7 @@ mat-icon {
 .card-image-wrapper {
   flex: 0 0 45%;
   max-width: 45%;
-  max-height: 140px;
+  max-height: 8.75rem;
   padding-right: 0.5rem;
   margin-top: 0.75rem;
   margin-bottom: 1rem;
@@ -329,10 +328,10 @@ mat-icon {
   height: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 0.38rem;
 }
 .story-text{
-  margin-top: 25px;
+  margin-top: 1.56rem;
 }
 
 .heart-svg {
@@ -340,22 +339,22 @@ mat-icon {
 }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .tall-card .card-actions{
-    margin-top: -35px;
+    margin-top: -2.19rem;
   }
 
   .card-image-wrapper {
     flex: 0 0 50%;
     max-width: 50%;
-    max-height: 120px;
+    max-height: 7.5rem;
     padding-right: 0.5rem;
     margin-top: 0.5rem;
     margin-bottom: 0.75rem;
   }
 
   .card-image-wrapper .card-image {
-    border-radius: 5px;
+    border-radius: 0.31rem;
 }
 .card-title{
   margin-top: 1rem;
@@ -381,14 +380,14 @@ mat-icon {
 }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 120rem) {
   #flow-img {
-    bottom: -35px;
+    bottom: -2.19rem;
   }
 }
 
-@media screen and (min-width: 2560px) {
+@media screen and (min-width: 160rem) {
   #flow-img {
-    bottom: -75px;
+    bottom: -4.69rem;
   }
 }
