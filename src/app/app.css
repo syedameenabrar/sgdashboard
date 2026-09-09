@@ -2,7 +2,7 @@
   background-color: var(--oc-white);
   color: var(--text-color);
   padding: 0.5rem 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.13rem 0.25rem var(--shadow-10);
   position: fixed;
   /* Make the header fixed */
   top: 0;
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
@@ -24,8 +24,15 @@
   font-size: 1.8rem;
   font-weight: bold;
   text-decoration: none;
-  position: fixed;
+  /* Absolute against the fixed .app-header — a nested position: fixed with
+     no `top` ghosts/blurs on iOS Safari during scroll. */
+  position: absolute;
   left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 0.63rem;
 }
 
 .app-header .nav-links {
@@ -47,11 +54,11 @@
 
 .theme-toggle-button:hover {
   background-color: var(--primary-hover-color);
-  transform: translateY(-2px);
+  transform: translateY(-0.13rem);
 }
 
 .app-content {
-  padding-top: 80px;
+  padding-top: 5rem;
   /* Add padding to account for fixed header height */
 }
 
@@ -86,7 +93,7 @@
 }
 
 /* ====== Mobile styles ====== */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .menu-toggle {
     display: block;
     margin-left: auto;
@@ -100,12 +107,12 @@
     display: none;
     flex-direction: column;
     align-items: center;
-    background: #fff;
+    background: var(--oc-white);
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0.38rem 0.75rem var(--shadow-12);
     padding: 1rem 0;
     z-index: 1100;
   }
@@ -121,11 +128,12 @@
 }
 
 .app-content {
-  padding-top: 80px;
+  padding-top: 5rem;
   min-height: 100vh;
 }
 
 .image-12 {
-    width: 12.5rem;
+    width: 11.5rem;
+    height: auto;
     padding: 0 0.5rem;
 }

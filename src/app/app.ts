@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard';
 import { FooterComponent } from './components/footer/footer.component';
 import { Loader } from "./components/loader/loader";
 import { filter } from 'rxjs';
+import { SHIKSHAGRAHA_LOGO_ALT, SHIKSHAGRAHA_WEBSITE_URL } from '../constants/appConstants';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ import { filter } from 'rxjs';
     <app-loader></app-loader>
     <header class="app-header" *ngIf="showHeader">
       <nav class="container">
-        <a routerLink="/" class="logo"><img src="assets/icons/main_logo.svg" alt="Shikshagraha" class="image-12"></a>
+        <a [href]="shikshagrahaWebsiteUrl" class="logo"><img src="assets/icons/main_logo.png" [alt]="shikshagrahaLogoAlt" class="image-12"></a>
 
         <button
           class="menu-toggle"
@@ -51,6 +52,8 @@ export class AppComponent implements OnInit {
   isMenuOpen = false;
   showHeader = true;
   showFooter = true;
+  readonly shikshagrahaWebsiteUrl = SHIKSHAGRAHA_WEBSITE_URL;
+  readonly shikshagrahaLogoAlt = SHIKSHAGRAHA_LOGO_ALT;
 
   constructor(
     private themeService: ThemeService,

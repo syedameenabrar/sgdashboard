@@ -139,23 +139,7 @@
           >
             <div class="pillrow">
               <ng-container
-                *ngFor="let layer of primaryLayers; trackBy: trackByLayerKey"
-              >
-                <ng-container
-                  *ngTemplateOutlet="
-                    pillButton;
-                    context: {
-                      layer: layer,
-                      active: selectedLayerKey === layer.key,
-                    }
-                  "
-                ></ng-container>
-              </ng-container>
-            </div>
-
-            <div class="pillrow">
-              <ng-container
-                *ngFor="let layer of secondaryLayers; trackBy: trackByLayerKey"
+                *ngFor="let layer of frameworkLayers; trackBy: trackByLayerKey"
               >
                 <ng-container
                   *ngTemplateOutlet="
