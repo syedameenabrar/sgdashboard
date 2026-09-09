@@ -361,23 +361,6 @@ export class OutcomesModelComponent implements OnDestroy, OnInit {
     return this.selectedProgramData?.cardVariant || 'outcome';
   }
 
-  // Narrative pills render in two rows of up to 3; kept as named slices so the
-  // split isn't a bare magic number repeated in the template.
-  get primaryLayers(): OutcomesLayerConfig[] {
-    return this.layers.slice(0, 3);
-  }
-
-  get secondaryLayers(): OutcomesLayerConfig[] {
-    return this.layers.slice(3).sort((a, b) => {
-      const order: Partial<Record<OutcomesLayerKey, number>> = {
-        system: 0,
-        society: 1,
-        network: 2,
-      };
-      return (order[a.key] ?? 99) - (order[b.key] ?? 99);
-    });
-  }
-
   get frameworkLayers(): OutcomesLayerConfig[] {
     const order: Partial<Record<OutcomesLayerKey, number>> = {
       students: 0,

@@ -1,5 +1,5 @@
 .chart-card {
-  min-width: 300px;
+  min-width: 18.75rem;
   margin: 0 auto;
   margin-top: 2rem;
 }
@@ -8,7 +8,7 @@ mat-card-title {
  padding-top: 2rem;
  padding-left: 2rem;
  font-weight: 700;
- font-size: 1.4rem;
+ font-size: 1rem;
  margin-bottom: 1rem;
  text-align: center;
 }
@@ -20,8 +20,8 @@ mat-card {
 .year-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 10px 0;
+  gap: 0.63rem;
+  margin: 0.63rem 0;
 }
 
 ::ng-deep .chart-legend {
@@ -36,7 +36,7 @@ mat-card {
 
 .chart-card mat-card-content {
   /* Padding around the chart */
-  padding: 20px !important;
+  padding: 1.25rem !important;
 }
 
 .outer-container {
@@ -45,36 +45,36 @@ mat-card {
 
 /* Style for chart labels to improve readability */
 ::ng-deep .pie-label {
-  font-size: 12px !important;
-  fill: #000000 !important;
+  font-size: 0.75rem !important;
+  fill: var(--oc-black) !important;
   font-weight: bold;
 }
 
 /* Style for tooltips with increased padding */
 ::ng-deep .ngx-charts-tooltip {
-  padding: 12px !important; /* Increased padding for tooltips */
-  font-size: 14px !important;
-  background: #333 !important;
-  color: #fff !important;
-  border-radius: 4px !important;
+  padding: 0.75rem !important; /* Increased padding for tooltips */
+  font-size: 0.88rem !important;
+  background: var(--color-ink-600) !important;
+  color: var(--oc-white) !important;
+  border-radius: 0.25rem !important;
 }
 
 /* Alternative selector for tooltip in case ::ng-deep fails */
 :host ::ng-deep .ngx-charts-tooltip-content {
-  padding: 12px !important;
-  font-size: 14px !important;
-  background: #333 !important;
-  color: #fff !important;
-  border-radius: 4px !important;
+  padding: 0.75rem !important;
+  font-size: 0.88rem !important;
+  background: var(--color-ink-600) !important;
+  color: var(--oc-white) !important;
+  border-radius: 0.25rem !important;
 }
 
 .donut-chart {
   width: 100%;
-  height: 400px;
+  height: 25rem;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .chart-card {
     overflow-x: scroll;
   }
@@ -93,6 +93,6 @@ mat-card-title {
 
 .chart-card mat-card-content {
   /* Padding around the chart */
-  padding: 0 0  20px 0 !important;
+  padding: 0 0  1.25rem 0 !important;
 }
 }
