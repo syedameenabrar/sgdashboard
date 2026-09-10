@@ -43,12 +43,6 @@ export class StateView implements OnInit, AfterViewInit, OnChanges {
   };
   private mapRendered = false;
 
-  /**
-   * Touch devices synthesise mouse events on tap. Running the hover tooltip then
-   * pushes #map-tooltip past the page edge (it's positioned from event.pageX),
-   * which adds horizontal scroll and makes iOS cancel the follow-up click. Skip
-   * hover behaviour on touch — a tap just navigates.
-   */
   private readonly isTouchDevice =
     typeof window !== 'undefined' &&
     typeof window.matchMedia === 'function' &&
