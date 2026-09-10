@@ -37,6 +37,11 @@ export class CountryView implements OnInit, AfterViewInit {
   displayLegends: any = [];
   isMobile = false;
 
+  private readonly isTouchDevice =
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
   // Embedded JSON data
   private indicatorJson = {
     "result": {
@@ -115,9 +120,15 @@ export class CountryView implements OnInit, AfterViewInit {
   }
 
   private resizeTimeout: any;
+  private lastViewportWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
+    if (window.innerWidth === this.lastViewportWidth) {
+      return;
+    }
+    this.lastViewportWidth = window.innerWidth;
+
     if(!this.isMobile){
        clearTimeout(this.resizeTimeout);
        this.resizeTimeout = setTimeout(() => this.drawMap(), 200);
@@ -190,6 +201,7 @@ export class CountryView implements OnInit, AfterViewInit {
           return statesData[stateCode] ? 'pointer' : 'default';
         })
         .on('mouseover', (event: any, d: any) => {
+          if (this.isTouchDevice) return;
           const stateCode = d.properties.st_code;
           const stateInfo = statesData[stateCode];
           const stateName = d.properties.st_nm || 'Unknown State'; // Fallback to state name from topojson
@@ -230,6 +242,7 @@ export class CountryView implements OnInit, AfterViewInit {
           }
         })
         .on('mousemove', (event: any) => {
+          if (this.isTouchDevice) return;
           this.positionTooltip(event, document.getElementById('map-tooltip')!);
         })
         .on('mouseout', () => {
@@ -321,6 +334,7 @@ export class CountryView implements OnInit, AfterViewInit {
           return iconStatesData[stateCode] ? 'pointer' : 'default';
         })
         .on('mouseover', (event: any, d: any) => {
+          if (this.isTouchDevice) return;
           const stateCode = d.properties.st_code;
           const stateInfo = statesData[stateCode];
           const stateName = d.properties.st_nm || 'Unknown State'; // Fallback to state name from topojson
@@ -361,6 +375,7 @@ export class CountryView implements OnInit, AfterViewInit {
           }
         })
         .on('mousemove', (event: any) => {
+          if (this.isTouchDevice) return;
           this.positionTooltip(event, document.getElementById('map-tooltip')!);
         })
         .on('mouseout', () => {
