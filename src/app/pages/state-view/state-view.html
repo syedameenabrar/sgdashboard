@@ -17,7 +17,7 @@
     @if(showDetails){
       <div class="indicator-container">
         <div>
-        <h4 class="heading">{{country + '> '}} {{selectedState}} {{hoveredDistrict ? ( '> '+hoveredDistrict ) : ""}}</h4>
+        <h4 class="heading">{{country + ' > '}} {{selectedState}} {{hoveredDistrict ? ( '> '+hoveredDistrict ) : ""}}</h4>
         <div class="indicator-card-grid m-0">
           <app-mini-indicator-card *ngFor="let indicator of indicatorData" [value]="indicator.value" [label]="indicator.label" class="indicator-card-item card-mobile-view"></app-mini-indicator-card>
           </div>

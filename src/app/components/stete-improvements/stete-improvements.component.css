@@ -206,7 +206,7 @@
   .dashboard-main-container h4 {
     font-size: 1.1rem;
     margin-bottom: 1rem;
-
+    font-family: var(--sg-font-body) !important;
   }
 
   .dashboard-container {
