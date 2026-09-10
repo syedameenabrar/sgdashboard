@@ -128,7 +128,6 @@ export class OutcomesEvidenceCarouselComponent {
     const url = this.getSafeEvidenceUrl(evidence);
     if (!url) return;
 
-    event.preventDefault();
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 

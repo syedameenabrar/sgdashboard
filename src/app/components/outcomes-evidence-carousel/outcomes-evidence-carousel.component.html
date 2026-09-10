@@ -41,16 +41,7 @@
           class="evidence-card"
           *ngFor="let evidence of visibleEvidences; trackBy: trackByIndex"
           [class.is-clickable]="!!getSafeEvidenceUrl(evidence)"
-          [attr.role]="getSafeEvidenceUrl(evidence) ? 'link' : null"
-          [attr.tabindex]="getSafeEvidenceUrl(evidence) ? 0 : null"
-          [attr.aria-label]="
-            getSafeEvidenceUrl(evidence)
-              ? viewLabel + ': ' + getEvidenceDisplayName(evidence)
-              : null
-          "
           (click)="openEvidence(evidence, $event)"
-          (keydown.enter)="openEvidence(evidence, $event)"
-          (keydown.space)="openEvidence(evidence, $event)"
         >
           <span
             class="evidence-file-icon"
