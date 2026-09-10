@@ -1,6 +1,6 @@
 .carousel-wrapper {
   display: flex;
-  background: #5f2c82;
+  background: var(--color-purple-slider);
   padding: 3rem 8rem;
   align-items: center;
   justify-content: center;
@@ -10,10 +10,10 @@
   /* Prevent wrapping by default */
 
   .side-header {
-    color: white;
+    color: var(--oc-white);
     font-size: 1.5rem;
     font-weight: bold;
-    flex-basis: 200px;
+    flex-basis: 12.5rem;
     /* Use flex-basis instead of width */
     flex-shrink: 0;
     /* Prevent shrinking */
@@ -22,13 +22,14 @@
     line-height: 1.3;
     text-align: right;
     /* Align text to the right */
+    font-family: var(--sg-font-heading);
   }
 }
 
 .message-container {
   display: flex;
   flex-direction: row;
-  margin: 20px;
+  margin: 1.25rem;
   margin-top: 2.5rem;
 }
 
@@ -42,14 +43,14 @@
   /* Ensure it doesn't overflow */
 
   .nav {
-    background: white;
+    background: var(--oc-white);
     border: none;
     border-radius: 50%;
     font-size: 1.5rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
     z-index: 1;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.13rem 0.38rem var(--shadow-20);
     transition: background 0.2s;
     position: absolute;
     /* Position navigation buttons absolutely */
@@ -57,17 +58,17 @@
     transform: translateY(-50%);
 
     &.left {
-      left: -25px;
+      left: -1.56rem;
       /* Adjust as needed */
     }
 
     &.right {
-      right: -25px;
+      right: -1.56rem;
       /* Adjust as needed */
     }
 
     &:hover {
-      background: #eee;
+      background: var(--color-border-faint);
     }
   }
 
@@ -89,11 +90,11 @@
       /* Include padding in width calculation */
 
       .card {
-        background: white;
+        background: var(--oc-white);
         height: 100%;
         border-radius: 1rem;
         text-align: center; // keep this for other content
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0.25rem 0.75rem var(--shadow-10);
         position: relative;
         overflow: hidden;
         padding: 1.5rem 1rem 5rem;
@@ -101,15 +102,15 @@
         .quote {
           font-size: 3rem;
           position: absolute;
-          top: 15px;
-          left: 20px;
+          top: 0.94rem;
+          left: 1.25rem;
           text-align: left;
         }
 
         .message {
           font-size: 0.8rem;
           margin: 1rem 0;
-          color: #333;
+          color: var(--color-ink-600);
         }
 
         .wave {
@@ -117,7 +118,7 @@
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 120px;
+          height: 7.5rem;
           color: var(--cardColor);
 
           svg {
@@ -129,13 +130,13 @@
 
 
         .avatar {
-          width: 40px;
-          height: 40px;
-          background: white;
+          width: 2.5rem;
+          height: 2.5rem;
+          background: var(--oc-white);
           border-radius: 50%;
-          border: 2px solid var(--cardColor);
+          border: 0.13rem solid var(--cardColor);
           position: absolute;
-          bottom: 65px;
+          bottom: 4.06rem;
           left: 50%;
           transform: translateX(-50%);
           font-size: 1.5rem;
@@ -146,29 +147,29 @@
 
         .details {
           position: absolute;
-          bottom: 12px;
+          bottom: 0.75rem;
           left: 0;
           width: 100%;
 
           .name {
-            color: #fefefe;
+            color: var(--color-surface-near-white);
           }
 
           .org {
             font-size: 0.6rem;
-            color: #f7f7f7;
+            color: var(--color-surface-f7);
           }
         }
       }
     }
   }
 }
-@media (max-width: 1560px) {
+@media (max-width: 97.5rem) {
   .carousel-container .carousel .carousel-slide {
     flex: 0 0 45%;
   }
 }
-@media (max-width: 1260px) {
+@media (max-width: 78.75rem) {
   .carousel-container .carousel .carousel-slide {
     flex: 0 0 50%;
   }
@@ -176,7 +177,7 @@
 /* Media Queries for Responsiveness */
 
 /* Tablets and smaller desktops */
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
   .carousel-wrapper {
     padding: 3rem;
     flex-direction: column;
@@ -185,7 +186,7 @@
 
   .carousel-wrapper .side-header {
     width: 100%;
-    flex-basis: 50px;
+    flex-basis: 3.13rem;
     /* Use flex-basis instead of width */
     text-align: center;
     margin-right: 0;
@@ -203,7 +204,7 @@
 }
 
 /* Mobile devices */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .carousel-wrapper {
     padding: 2rem;
   }

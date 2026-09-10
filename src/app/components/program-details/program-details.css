@@ -785,4 +785,8 @@ mat-icon {
   .outcomes-section-heading {
     margin-bottom: 0.5rem;
   }
+
+  .left-section{
+    gap: 0.2rem;
+  }
 }

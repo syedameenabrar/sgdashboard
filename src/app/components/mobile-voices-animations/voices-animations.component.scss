@@ -1,12 +1,12 @@
 .animation-container {
   position: relative;
-  height: 220px;
+  height: 13.75rem;
   overflow: hidden;
   left: 1%;
 }
 
 .bg-img {
-  height: 780px;
+  height: 48.75rem;
 }
 
 .branch-wrapper {
@@ -14,7 +14,7 @@
   top: 0%;
   left: 3%;
   width: 90vw;
-  height: 700px;
+  height: 43.75rem;
   transform-origin: bottom left;
   pointer-events: none;
 
@@ -23,7 +23,7 @@
     object-fit: contain;
     object-position: bottom left;
     display: block;
-    transform: translateX(-40px);
+    transform: translateX(-2.5rem);
   }
 }
 
@@ -48,7 +48,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 0.13rem 0.25rem var(--shadow-20));
   }
 }
 
@@ -67,36 +67,36 @@
 }
 
 .dandelion-image {
-  height: 130px;
-  width: 60px;
+  height: 8.13rem;
+  width: 3.75rem;
 }
 
 .carousel-container {
   position: relative;
   margin-top: -16%;
   width: 100%;
-  height: 120px;
+  height: 7.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 0.63rem;
   box-sizing: border-box;
   z-index: 100;
 }
 
 .nav-btn {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--overlay-white-80);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  font-size: 20px;
-  color: #333;
+  box-shadow: 0 0.13rem 0.31rem var(--shadow-20);
+  font-size: 1.25rem;
+  color: var(--color-ink-600);
   transition: opacity 0.3s, transform 0.2s;
   z-index: 101;
 
@@ -110,42 +110,42 @@
   }
 
   img {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }
 
 .carousel-card {
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: var(--oc-white);
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.5rem 1.25rem var(--shadow-12);
   width: 70%;
-  max-width: 400px;
+  max-width: 25rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 150px;
+  min-height: 9.38rem;
   transition: all 0.3s ease-in-out;
   position: relative;
-  height: 120px;
-  padding-top: 60px;
+  height: 7.5rem;
+  padding-top: 3.75rem;
 
   .card-icon {
     position: absolute;
-    top: -3px;
-    left: 16px;
-    width: 100px;
-    height: 40px;
-    margin-bottom: 10px;
+    top: -0.19rem;
+    left: 1rem;
+    width: 6.25rem;
+    height: 2.5rem;
+    margin-bottom: 0.63rem;
   }
 
   .card-content {
-    font-size: 8px;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 0.5rem;
+    color: var(--color-ink-600);
+    margin-bottom: 0.63rem;
     text-align: left;
   }
 
@@ -153,81 +153,87 @@
     width: 100%;
     text-align: right;
     font-style: italic;
-    font-size: 9px;
-    color: #666;
+    font-size: 0.56rem;
+    color: var(--oc-stroke-grey);
     margin-top: auto;
   }
 
   &.problem-card {
-    background: #33210e;
-    color: white;
+    background: var(--color-brown-dark);
+    color: var(--oc-white);
 
     .card-content {
-      color: white;
+      color: var(--oc-white);
     }
 
     .author {
-      color: #ddd;
+      color: var(--color-border-subtle);
     }
   }
 
   &.solution-card {
-    border: 3px solid #562E91;
-    box-shadow: 0px 4px 20px 0px #562E918C;
+    border: 0.19rem solid var(--color-purple-deep);
+    box-shadow: 0 0.25rem 1.25rem 0 var(--color-purple-deep-55);
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 25rem) {
   .carousel-card {
     width: 75%;
-    padding: 8px;
-    min-height: 175px;
+    padding: 0.5rem;
+    min-height: 10.94rem;
 
     .card-content {
-      font-size: 9px;
-      margin-top: 40px;
+      font-size: 0.5rem;
+      margin-top: 2.5rem;
     }
   }
 
   .nav-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
+    width: 1.88rem;
+    height: 1.88rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 48rem) {
+  .carousel-card .card-content{
+    font-size: 0.44rem;
   }
 }
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 64rem) {
   .branch-wrapper {
     top: 15%;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 75rem) {
   .branch-wrapper {
     top: 10%;
   }
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 87.5rem) {
   .branch-wrapper {
     top: 4%;
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 100rem) {
   .branch-wrapper {
     top: -2%;
   }
 }
 
-@media screen and (min-width: 1900px) {
+@media screen and (min-width: 118.75rem) {
   .branch-wrapper {
     top: -16%;
   }
 }
 
-@media screen and (min-width: 2500px) {
+@media screen and (min-width: 156.25rem) {
   .branch-wrapper {
     top: -36%;
   }

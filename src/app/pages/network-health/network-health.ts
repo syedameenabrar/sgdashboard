@@ -71,10 +71,10 @@ export class NetworkHealth implements OnInit {
     const isMobile = this.breakpointObserver.isMatched(Breakpoints.Handset);
     const isTablet = this.breakpointObserver.isMatched(Breakpoints.Tablet);
     this.dialog.open(this.glossaryTemplate, {
-      width: isMobile ? '100%' : '600px',
+      width: isMobile ? 'calc(100% - 2rem)' : '600px',
       maxWidth: '1000px',
       position: isMobile
-        ? { top: '38%', right: '0%' }
+        ? { top: '38%', right: '1rem' }
         : isTablet
           ? { top: '18%', right: '8%' }
           : { top: '12%', right: '10%' },

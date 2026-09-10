@@ -157,6 +157,19 @@ html {
   --color-surface-muted: #f5f5f5;
   --color-tile-border: #111827;
   --color-purple-accent: #6a1b9a;
+  --shadow-20: rgba(0, 0, 0, 0.2);
+  --shadow-25: rgba(0, 0, 0, 0.25);
+  --overlay-white-80: rgba(255, 255, 255, 0.8);
+  --color-border-subtle: #dddddd;
+  --color-border-faint: #eeeeee;
+  --color-border-grey: #d0d0d0;
+  --color-surface-near-white: #fefefe;
+  --color-surface-f7: #f7f7f7;
+  --color-slate: #5f6b7d;
+  --color-brown-dark: #33210e;
+  --color-purple-deep: #562e91;
+  --color-purple-deep-55: #562e918c;
+  --color-purple-slider: #5f2c82;
 
 }
 
