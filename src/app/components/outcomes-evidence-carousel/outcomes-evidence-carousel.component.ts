@@ -121,6 +121,16 @@ export class OutcomesEvidenceCarouselComponent {
     }
   }
 
+  openEvidence(evidence: ProgramEvidenceResource, event: Event): void {
+    const target = event.target as HTMLElement;
+    if (target.closest('.evidence-view-link') || target.closest('.evidence-tag')) return;
+
+    const url = this.getSafeEvidenceUrl(evidence);
+    if (!url) return;
+
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
   // A tag counts as truncated only when its text is actually clipped by the
   // ellipsis, i.e. the rendered content is wider than the visible box. This is
   // measured on the real element rather than guessed from the string length, so

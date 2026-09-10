@@ -40,6 +40,8 @@
         <div
           class="evidence-card"
           *ngFor="let evidence of visibleEvidences; trackBy: trackByIndex"
+          [class.is-clickable]="!!getSafeEvidenceUrl(evidence)"
+          (click)="openEvidence(evidence, $event)"
         >
           <span
             class="evidence-file-icon"
