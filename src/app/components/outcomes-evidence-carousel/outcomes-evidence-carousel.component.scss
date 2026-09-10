@@ -66,6 +66,10 @@
   grid-template-columns: 2.125rem minmax(0, 1fr) minmax(0, 1fr);
   min-height: 4.125rem;
   padding: 0.563rem 0.688rem;
+
+  &.is-clickable {
+    cursor: pointer;
+  }
 }
 
 .evidence-file-icon {
