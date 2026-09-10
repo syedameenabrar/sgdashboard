@@ -41,11 +41,11 @@
   .dashboard-main-tagline {
     font-size: 1.8rem;
     margin-bottom: 2.5rem;
-    color: #6c757d; /* A slightly muted text color */
+    color: var(--color-muted); /* A slightly muted text color */
   }
 
   .dashboard-main-summary {
-    max-width: 800px;
+    max-width: 50rem;
     margin: 0 auto 3rem;
     text-align: left;
     font-size: 1.1rem;
@@ -61,7 +61,7 @@
   .dashboard-main-summary ul li {
     margin-bottom: 0.8rem;
     position: relative;
-    padding-left: 25px;
+    padding-left: 1.56rem;
   }
 
   .dashboard-main-summary ul li::before {
@@ -83,19 +83,19 @@
 
   .cta-card {
     background-color: var(--hero-background-color);
-    border-radius: 12px;
+    border-radius: 0.75rem;
     padding: 2.5rem;
     flex: 1;
-    max-width: 500px;
+    max-width: 31.25rem;
     text-align: left;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.25rem 1.25rem var(--shadow-08);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    border: 1px solid #e0e0e0;
+    border: 0.06rem solid var(--color-border-light);
   }
 
   .cta-card:hover {
-    transform: translateY(-8px) scale(1.03); /* Lift effect and slight zoom */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); /* More pronounced shadow */
+    transform: translateY(-0.5rem) scale(1.03); /* Lift effect and slight zoom */
+    box-shadow: 0 0.5rem 1.88rem var(--shadow-12); /* More pronounced shadow */
     background-color: rgba(var(--primary-color-rgb), 0.05); /* Subtle background change */
   }
 
@@ -114,10 +114,10 @@
 
   .cta-button {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--oc-white);
     padding: 0.9rem 2.2rem;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     font-size: 1.05rem;
     font-weight: 500;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -126,7 +126,7 @@
 
   .cta-button:hover {
     background-color: var(--primary-hover-color);
-    transform: translateY(-2px);
+    transform: translateY(-0.13rem);
   }
 
   /* Data Indicators Section */
@@ -145,7 +145,7 @@
 
   .data-indicators-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
     gap: 1.5rem;
     align-items: stretch; /* Ensure all grid items stretch to the same height */
   }
@@ -184,7 +184,7 @@
   }
 
   .partner-logo {
-    max-width: 150px;
+    max-width: 9.38rem;
     height: auto;
     filter: grayscale(100%); /* Optional: make logos grayscale */
     opacity: 0.7; /* Optional: reduce opacity */
@@ -217,7 +217,7 @@
   .dashboard-container p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #6c757d;
+    color: var(--color-muted);
     margin-top: 0;
     text-align: center;
   }
@@ -227,7 +227,7 @@
     font-weight: 800;
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: #FF9911;
+    color: var(--oc-accent-orange);
     text-align: center;
   }
 
@@ -236,13 +236,13 @@
     margin-bottom: 1rem;
     text-align: center;
     margin-bottom: 0;
-    color: #FF9911;
+    color: var(--oc-accent-orange);
   }
 
   .container p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #6c757d;
+    color: var(--color-muted);
   }
 
 
@@ -254,7 +254,7 @@
   }
 
   /* Responsive Adjustments */
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     .dashboard-main-section{
     padding: 2rem;
     }
@@ -327,4 +327,5 @@
   .sub-header{
     font-size: 1.1rem;
     margin-bottom: 1rem;
+    font-family: var(--sg-font-body) !important;
   }

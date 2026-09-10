@@ -86,7 +86,7 @@
     </ng-container>
     <ng-container *ngIf="section.type === 'story-of-the-week'">
       <section class="margin-spacing" [ngClass]="section.styles.section">
-        <h5 [ngClass]="section.styles.title" class="section-title">{{ section.title }}</h5>
+        <h5 [ngClass]="section.styles.title" class="section-title story-week-title">{{ section.title }}</h5>
         <div class="row justify-content-center">
           <div class="story-card">
             <app-improvement-story [story]="story" [storyOfWeek]="true" [browserId]="browserId"

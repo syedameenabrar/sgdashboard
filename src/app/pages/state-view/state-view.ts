@@ -43,6 +43,11 @@ export class StateView implements OnInit, AfterViewInit, OnChanges {
   };
   private mapRendered = false;
 
+  private readonly isTouchDevice =
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
   constructor(private router: Router, private loaderRunner: LoaderRunnerService) { }
 
   ngOnInit(): void {
@@ -272,6 +277,7 @@ export class StateView implements OnInit, AfterViewInit, OnChanges {
           return districtsData[districtCode] ? 'pointer' : 'default';
         })
         .on('mouseover', (event: any, d: any) => {
+          if (this.isTouchDevice) return;
           const districtCode = d.properties.dt_code;
           const districtInfo = districtsData[districtCode];
           const districtName = d.properties.district || 'Unknown District'; // Fallback to district name from topojson
@@ -315,6 +321,7 @@ export class StateView implements OnInit, AfterViewInit, OnChanges {
           }
         })
         .on('mousemove', (event: any) => {
+          if (this.isTouchDevice) return;
           tooltip.style('left', (event.pageX + 10) + 'px')
             .style('top', (event.pageY - 28) + 'px');
         })
@@ -368,6 +375,7 @@ export class StateView implements OnInit, AfterViewInit, OnChanges {
           return iconDistrictsData[districtCode] ? 'pointer' : 'default';
         })
         .on('mouseover', (event: any, d: any) => {
+          if (this.isTouchDevice) return;
           const districtCode = d.properties.dt_code;
           const districtInfo = districtsData[districtCode];
           const districtName = d.properties.district || 'Unknown District'; // Fallback to district name from topojson
@@ -411,6 +419,7 @@ export class StateView implements OnInit, AfterViewInit, OnChanges {
           }
         })
         .on('mousemove', (event: any) => {
+          if (this.isTouchDevice) return;
           tooltip.style('left', (event.pageX + 10) + 'px')
             .style('top', (event.pageY - 28) + 'px');
         })
