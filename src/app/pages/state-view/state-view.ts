@@ -185,9 +185,15 @@ export class StateView implements OnInit, AfterViewInit, OnChanges {
   }
 
   private resizeTimeout: any;
+  private lastViewportWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
+    if (window.innerWidth === this.lastViewportWidth) {
+      return;
+    }
+    this.lastViewportWidth = window.innerWidth;
+
     if (!(window.innerWidth <= 768)) {
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = setTimeout(() => this.drawMap(), 200);
