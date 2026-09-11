@@ -170,6 +170,11 @@ html {
   --color-purple-deep: #562e91;
   --color-purple-deep-55: #562e918c;
   --color-purple-slider: #5f2c82;
+  --color-surface-blue-light: #e8f5ff;
+  --overlay-white-70: rgba(255, 255, 255, 0.7);
+  --shadow-30: rgba(0, 0, 0, 0.3);
+  --shadow-card-soft: rgba(100, 100, 111, 0.2);
+  --color-badge-completed: #65568e;
 
 }
 
