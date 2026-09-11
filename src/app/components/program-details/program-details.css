@@ -428,23 +428,27 @@ h5 {
 }
 
 .partner-name {
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 900;
     margin: 0;
     color: var(--oc-black);
+  font-family: var(--sg-font-body) !important; 
 }
 
 .know-more-btn {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: var(--oc-black);
     text-decoration: none;
     border-bottom: 0.06rem solid transparent;
     transition: all 0.2s ease-in-out;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 800;
 }
 
-.know-more-btn:hover {
+/* .know-more-btn:hover {
     border-bottom: 0.06rem solid var(--oc-black);
-}
+} */
 
 p {
     white-space: normal;

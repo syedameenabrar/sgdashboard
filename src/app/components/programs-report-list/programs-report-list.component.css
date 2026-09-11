@@ -45,7 +45,13 @@
   .carousel .nav.right { right: 0.63rem; }
 
 .report-description {
-    padding: 0.31rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.15rem 0.48rem;
     margin-top: 1rem;
     font-size: 0.8rem;
     color: var(--color-muted);

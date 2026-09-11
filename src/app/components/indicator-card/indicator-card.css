@@ -51,6 +51,7 @@
   color: var(--secondary-color-light);
   line-height: 1.12;
   margin: 0 0 0.25rem;
+  text-align: left;
 }
 
 .indicator-label {
